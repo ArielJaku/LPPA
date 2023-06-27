@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">        
+        <title>Noticia con Formulario Actividad 9</title>
+    </head>
+    <body>
+        <header>
+        <div class="logo">
+            <img src="logoUAI.jpg" alt="logo" height="100px" width="100px"/>
+        </div>
+        <div>
+            <nav >
+                <ul class="barra">
+                    <li class="itemNav"><a href="index.html">INICIO</a></li>
+                    <li class="itemNav"><a href="index.html">INFORMACION</a></li>
+                    <li class="itemNav"><a href="index.html">CONVENIO</a></li>
+                    <li class="itemNav"><a href="index.html">SANTA FE MAS</a></li>
+                </ul>                       
+            </nav>
+        </div>
+        </header>
+        <main>
+            <h3>FORMULARIO DE REGISTRO</h3>
+            <h3 id="Sal">hola</h3>
+            <div class="contenedorForm">
+                <!--CAMPO NOMBRE COMPLETO-->
+                <div class="itemf">
+                    <label for="Nom" >NOMBRE COMPLETO</label>
+                    <input type="text" name="Nom" id="Nom">
+                    <label id="lblNom"></label>
+                </div>
+                <!--CAMPO EMAIL-->
+                <div class="itemf">
+                    <label for="Mail">CORREO</label>
+                    <input type="email" name="Mail" id="Mail">
+                    <label id="lblMail"></label>
+                </div>
+                <!--CAMPO CONTRASEÑA-->
+                <div class="itemf">
+                    <label for="Cont">CONTRASEÑA</label>
+                    <input type="password" name="Cont" id="Cont">
+                    <label id="lblCont"></label>
+                </div>
+                <!--CAMPO REPETIR CONTRASEÑA-->
+                <div class="itemf">
+                    <label for="ContR">REPETIR CONTRASEÑA</label>
+                    <input type="password" name="ContR" id="ContR">
+                    <label id="lblContR"></label>
+                </div>
+                <!--CAMPO EDAD-->
+                <div class="itemf">
+                    <label for="Edad">EDAD</label>
+                    <input type="text" name="Edad" id="Edad">
+                    <label id="lblEdad"></label>
+                </div>
+                <!--CAMPO TELEFONO-->
+                <div class="itemf">
+                    <label for="Tel">TELEFONO</label>
+                    <input type="text" name="Tel" id="Tel">
+                    <label id="lblTel"></label>
+                </div>
+                <!--CAMPO DIRECCION-->
+                <div class="itemf">
+                    <label for="Dire">DIRECCION</label>
+                    <input type="text" name="Dire" id="Dire">
+                    <label id="lblDire"></label>
+                </div>
+                <!--CAMPO CIUDAD-->
+                <div class="itemf">
+                    <label for="Ciudad">CIUDAD</label>
+                    <input type="text" name="Ciudad" id="Ciudad">
+                    <label id="lblCiudad"></label>
+                </div>
+                <!--COD POSTAL-->
+                <div class="itemf">
+                    <label for="Cod">CODIGO POSTAL</label>
+                    <input type="text" name="Cod" id="Cod">
+                    <label id="lblCod"></label>
+                </div>
+                <!--DNI-->
+                <div class="itemf">
+                    <label for="DNI">DNI</label>
+                    <input type="text" name="DNI" id="dni">
+                    <label id="lbldni"></label>   
+                </div>
+                <input type="button" value="Enviar" class="button" id="botoncito">                
+            </div>
+        </main>
+        <footer>
+            <div class="pie">
+                <h4>Links a git, nota original y pagina de UAI</h4>
+                <a href="https://github.com/ArielJaku" target="_blank">
+                <img src="IconoGit.png" height="50px" width="50px" />        
+                </a>
+                <a href="https://www.santafe.gob.ar/noticias/noticia/275660/" target="_blank">
+                <img src="IconoStaFe.png" height="50px" width="50px" />        
+                </a>
+                <a href="https://uai.edu.ar/" target="_blank">
+                <img src="IconoUai.jpg" height="50px" width="100px" />        
+                </a>
+            </div>
+        </footer>
+        <script src="formu.js"></script>
+    </body>
+</html>
