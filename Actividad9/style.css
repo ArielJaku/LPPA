@@ -123,3 +123,31 @@ main h3{
   margin-top: 5px;
   align-content: center;
 }
+
+@media screen and (max-width: 950px){   
+  .contenedorForm{    
+    margin-right: 0;
+    margin-left: 0;
+    width: 90%;
+    padding-left: 15px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .contenedorForm{
+    display: flex;    
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    
+  }
+  .itemf{
+    width: 95%;
+    padding-left: 1%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  
+
+}
