@@ -1,5 +1,15 @@
 console.log("BIENVENIDO A LA CONSOLA DEL FORMULARIO");
-
+if(localStorage.getItem(0)==null){
+    console.log("No hay nada");
+}else{
+    console.log("hay cosas");
+    var inputs = document.getElementsByTagName('input');
+    for(i=0;i<=9;i++){    
+        
+        inputs[i].value = localStorage.getItem(i);       
+        
+       }
+}
 //ESPACIO PARA COMPROBAR NOMBRE COMPLETOS
 var nombre = document.getElementById('Nom');
 nombre.addEventListener('blur', comprobarNombre);
@@ -357,23 +367,54 @@ function limpCod(){
     lblDni.textContent = ' ';
  }
 
-//BOTON ALERT SI ALGUNA ESTA MAL MOSTRARLA IGUAL PERO COMO ERRONEA
+ //ENVIO DE FORMULARIO Y COMPROBACION
 var botonEnv = document.getElementById('botoncito');
 botonEnv.addEventListener('click',funBoton);
 
-function funBoton(){   
+function funBoton(){
+   var contError = 0;   
    var inputs = document.getElementsByTagName('input');   
    var arrayContenidoForm = [];
    for(i=0;i<=9;i++){    
     if(inputs[i].style.borderColor == "red")
     {
         inputs[i].value += " X"
+        contError ++;
     }
     arrayContenidoForm += inputs[i].value;
     arrayContenidoForm += "\n";
     
    }
-   alert("Los elementos del formulario se marcaran con un X si estan incorrectos \n" + arrayContenidoForm);
+   if(contError!=0){
+    alert("Algunos elementos del formularios son erroneos, se marcaran con una X los que estan mal \n" + arrayContenidoForm);
+   }else{
+
+    llamadaApi();
+    for(i=0;i<=9;i++){    
+        localStorage.setItem(i,inputs[i].value);
+    }       
+ }
 }
 
+function llamadaApi(){
+    //RECORRIENDO LOS INPUTS Y SETEANDO LOS VALORES
+    var inputs = document.getElementsByTagName('input');  
+    var cuerpoPost = 'nombre='+inputs[0].value+'&correo='+inputs[1].value+'&edad='+inputs[4].value+
+    '&telefono='+inputs[5].value+'&direccion='+inputs[6].value+'&ciudad='+inputs[7].value+'&dni='+inputs[9].value; 
 
+    const API_URL = "https://jsonplaceholder.typicode.com/posts";
+    const xhr = new XMLHttpRequest();
+    function onRequestHandler(){        
+        if(this.status == 201 && this.readyState == 4){            
+            const data = JSON.parse(this.response);            
+            console.log(data);
+            alert(JSON.stringify(data));
+        }
+    }
+
+    xhr.addEventListener('load',onRequestHandler);
+    xhr.open('POST',API_URL,true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    xhr.send(cuerpoPost);
+
+}

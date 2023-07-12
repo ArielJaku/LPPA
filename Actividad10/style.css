@@ -1,0 +1,153 @@
+.logo{
+  padding-left: 45%;
+  padding-right: 45%;
+}
+
+.barra{
+  display: flex; 
+  background-color: #333;
+  justify-content: space-around;  
+  box-sizing: border-box;
+  font-size: 17px;
+  padding-left: 0;
+
+}
+
+.itemNav{
+  flex-grow: 1;
+  text-align: center;  
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.barra li{
+  list-style: none;
+}
+
+.barra li a{
+ text-decoration: none;
+ color: white;
+}
+
+.barra li:hover {
+  background-color: #662938;
+}
+
+h1 {
+	background-color: #662938;
+	color: white;
+	margin-left: 0;
+	text-align: center;
+}
+
+.contenedorMain{
+  text-align: center;
+}
+
+.contenedorMain img{
+  padding-right: 80px;
+}
+
+.itemS p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.itemS h2 {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.itemS:nth-child(1){
+  background-color: rgb(219, 219, 219);
+  padding-bottom: 20px;
+}
+
+.itemS:nth-child(2){
+  background-color: rgb(144, 144, 144);
+  padding-bottom: 20px;
+}
+
+.itemS:nth-child(3){
+  background-color: rgb(68, 68, 68);
+  padding-bottom: 20px;
+}
+
+.pie{
+  text-align: center;
+}
+
+.pie a{
+  padding-left: 5px;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+main h3{
+  text-align: center;
+}
+
+.contenedorForm{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20%;
+  margin-left: 20%;
+  width: 60%;
+  padding-left: 12px;
+}
+
+.itemf{
+  width: 48%;
+  padding-left: 1%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.itemf label{
+  display: block;
+}
+
+.itemf input{
+  width: 90%;
+  height: 30px;
+}
+
+.button{
+  background-color: blue;
+  color: aliceblue;
+  text-decoration: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 5px;
+  align-content: center;
+}
+
+@media screen and (max-width: 950px){   
+  .contenedorForm{    
+    margin-right: 0;
+    margin-left: 0;
+    width: 90%;
+    padding-left: 15px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .contenedorForm{
+    display: flex;    
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    
+  }
+  .itemf{
+    width: 95%;
+    padding-left: 1%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  
+
+}
