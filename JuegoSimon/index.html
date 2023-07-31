@@ -10,9 +10,15 @@
     <div class="contenedorFlex">
         <div class="cabecera">
             <H1>SIMON GAME</H1>
-            <h2>JUGAR AL SIMON!</h2>
+            <h2>A JUGAR AL SIMON <label id="lblJugador"></label>!</h2>
             <input type="button" class="play" id="iniciar" value="PLAY">
-        </div>
+            <input type="button" class="replay" id="replay" value="REINCIAR">
+            <div class="tipoJuego">               
+                <a href="formu.html">Contacto</a>
+                <a href="https://github.com/ArielJaku/LPPA/tree/master/JuegoSimon" target="_blank">Repositorio</a>
+                <a id="botonRanking">Ranking</a>
+             </div>
+        </div>        
         <div class="cuerpo">
             <div class="contenedorJuego">
                 <div class="dosDeArriba">
@@ -28,15 +34,59 @@
         <div class="pie">
             <div class="puntos">
                 <label for="">PUNTOS: </label>
-                <label for="" id="score">0</label>
+                <label for="" id="score">0</label>                
             </div>
-            <div class="tipoJuego">
-               <input type="button" class="replay" id="replay" value="Reiniciar el juego">
-            </div>
+            <div>
+                <label for="">TIEMPO: </label>
+                <label for="" id="timer">0</label>
+            </div>            
             <div class="nivel">
                 <label for="">NIVEL: </label>
                 <label for="" id="level">0</label>
             </div>
+        </div>
+    </div>
+    <!-- Ventana modal ingreso Pagina-->
+    <div id="ventanaModal" class="modal">
+        <div class="contenido-modal">            
+            <h2>INGRESE SU NOMBRE</h2>
+            <input type="text" name="Jugador" id="nomJugador">
+            <div>
+            <label for="Jugador" id="advertencia"></label>
+            </div>
+            <button id="cerrarModal" class="cerrarModIng">Ingresar</button>
+        </div>
+    </div>
+    <!-- Ventana modal Fin del Juego -->
+    <div id="ventanaModalFin" class="modalFin">
+        <div class="contenido-modalFin">            
+            <h2>¡GANASTE!</h2>
+            tu puntuacion es:
+            <label for="puntos" id="puntos"></label><br>
+            tu tiempo fue de :
+            <label for="tiempo" id="tiempo"></label><br>
+            tu puntuacion total es de:
+            <label for="scoreFinal" id="scoreFinal"></label><br>
+            <button id="cerrarModalVictoria" class="cerrarModVic">Reiniciar el juego</button>
+        </div>
+    </div>
+    <!-- Ventana modal erro Secuencia-->
+    <div id="ventanaModalError" class="modalError">
+        <div class="contenido-modalError">            
+            <h2>ERRASTE LA SECUENCIA</h2>
+            <H2>PERDISTE</H2>            
+            <button id="cerrarModalError" class="cerrarModVic">Reiniciar el juego</button>
+        </div>
+    </div>
+    <!--Pop up ranking-->
+    <div id="popUpRanking" class="ranking">
+        <div class="contenido-ranking">            
+            <h3>ranking de partidas</h3>
+            <ul id="listaPuntos">
+            </ul>         
+            <input type="button" name="porFecha" id="porFecha" value="ordenar por fecha">
+            <input type="button" name="porValor" id="porValor" value="ordenar por puntos">
+            <input type="button" name="cerrarRanking" id="cerrarRanking" value="cerrar">
         </div>
     </div>
     <script src="funcion.js"></script>   

@@ -21,7 +21,7 @@
     flex-grow: 1;
     display: flex;
     width: 80%;
-    justify-content: space-between;
+    justify-content: space-around;    
     padding-top: 20px;
     font-family: 'Times New Roman', Times, serif;
     font-size: larger;
@@ -82,7 +82,215 @@
 
 .replay{
     height: 50px;
-    width: 150px;
+    width: 100px;
     background-color: rgb(80, 89, 255);
     color: white;
 }
+
+/* Fondo modal */
+.modal{
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 10%;
+    padding-left: 40%;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;   
+    background-color: rgba(0,0,0,0.5);
+}
+
+.contenido-modal{       
+    background-color: white;
+    text-align: center;
+    border: 4px black solid;       
+    width: 300px;
+    height: 200px;
+  }
+
+  .contenido-modal input{       
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+.cerrarModIng{
+    height: 50px;
+    width: 100px;
+    background-color: rgb(169, 207, 32);
+    color: white;
+}
+
+/*Modal de cierre de juego*/
+.modalFin{
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 10%; 
+    padding-left: 30%;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;   
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.contenido-modalFin{
+    text-align: center;       
+    background-color:white;
+    color: rgb(0, 136, 255);
+    border: 4px black solid;       
+    width: 400px;
+    height: 200px;
+}
+
+.contenido-modalFin button{
+    margin-top: 20px;
+    background-color:rgb(0, 136, 255);
+}
+
+.cerrarMod{
+    height: 50px;
+    width: 100px;
+    background-color: rgb(89, 80, 255);
+    color: rgb(194, 234, 16);
+}
+
+/*Modal erro secuencia*/
+.modalError{
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    padding-top: 10%;
+    padding-left: 30%;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;    
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.contenido-modalError{
+    text-align: center;       
+    background-color: red;
+    color: aliceblue;
+    border: 4px aliceblue solid;      
+    width: 400px;
+    height: 200px;
+}
+
+.contenido-modalError button{
+    background-color: black;
+    color: white;
+}
+
+/*pop Up ranking*/
+.ranking{
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 10%; 
+    padding-left: 30%;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;   
+    background-color: rgba(0,0,0,0.5); 
+}
+
+.contenido-ranking{
+    text-align: center;      
+    background-color: white;
+    border: 4px black solid;      
+    width: 350px;
+    height: 500px;
+}
+
+.contenido-ranking ul{
+    list-style: none;
+    padding: 0;
+}
+
+.contenido-ranking li{    
+    border: 2px black solid; 
+    
+}
+
+.contenido-ranking input{    
+    background-color: black;
+    color: white;
+}
+
+.cerrarModVic{
+    height: 50px;
+    width: 100px;
+    background-color: rgb(89, 80, 255);
+    color: rgb(194, 234, 16);
+}
+
+.tipoJuego{
+   margin-top: 10px;
+}
+
+.tipoJuego a{
+    align-items: center;
+    text-decoration: none;
+    background-color: #b20c9f;
+    border: 2px black solid;
+    color: white;
+    padding: 5px;
+}
+
+@media screen and (max-width: 500px){
+    .contenedorJuego input{
+        height: 150px;
+        width: 150px;
+    }    
+    .contenedorFlex{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;    
+    }
+    .modal{       
+        padding-left: 0px;
+      }
+    
+    .ranking{        
+        padding-left: 0;        
+    }
+    .modalError{        
+        padding-left: 0;        
+    }
+    .modalFin{        
+        padding-left: 0;        
+    }
+  }
+
+
+@media screen and (max-width: 320px){
+    .contenedorJuego input{
+        height: 100px;
+        width: 100px;
+    }    
+    .contenedorFlex{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;    
+    }
+
+    .modal{       
+        padding-left: 0px;
+    }
+
+    .ranking{        
+        padding-left: 0;        
+    }
+    .modalError{        
+        padding-left: 0;        
+    }
+    .modalFin{        
+        padding-left: 0;        
+    }
+  }

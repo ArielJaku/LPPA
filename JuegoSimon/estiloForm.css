@@ -1,0 +1,28 @@
+.contenedorForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cabeceraForm{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.cuerpoForm{
+    text-align: center;
+    border: 1px black solid;
+    width: 300px;
+    padding: 5px;
+}
+
+.cuerpoForm input{
+    width: 80%;
+    margin: 10px;
+}
+
+.cuerpoForm textarea{
+    width: 80%;
+    margin: 10px;
+}
+

@@ -1,17 +1,23 @@
 console.log("BIENVENIDO A LA CONSOLA DEL JUEGO SIMON")
 
 var secuencia = [];
-secuencia = [1,3,2,0];
+secuencia = [];
 secJugador = [];
 var secuenciaJugador = [];
 var botonPlay = document.getElementById('iniciar');
 botonPlay.addEventListener('click',jugar);
+botonPlay.addEventListener('click',timer);
 var botonRePlay = document.getElementById('replay');
 botonRePlay.addEventListener('click',reiniciarTodo);
 
-score = 0;
+var controlClick = 0;
+var score = 0;
 var posArray = 0;
 var nivel = 0;
+var tiempo = 0;
+var scoreFinal = 0;
+var tiempoJugador = 0;
+var TimerFin;
 
 //ME TRAIGO LOS BOTONES
 //array de botones
@@ -24,8 +30,7 @@ boton[3] = document.getElementById('3');
 botonPresionado();
 
 function disparar(){
-    do{
-        debugger;
+    do{        
         var nuevoNumero = random(0,3)
     }while(nuevoNumero == secuencia[secuencia.length-1])        
     secuencia.push(nuevoNumero);
@@ -35,20 +40,23 @@ function disparar(){
     cambiaColores(val);    
     i++;
     if(i === secuencia.length){
-            
         clearInterval(interval);
     } 
 }, 500);    
 }
 
 function jugar(){
+    if(nivel!=6){
+    controlClick = 0;
     posArray = 0;
     nivel++;   
     disparar();
     console.log(secuencia);
-    cambiarNivel();
-    if(nivel==6){
-        alert("A finalizado el juego, su puntuacion es de: " + score);
+    cambiarNivel();    
+    }else{
+        tiempoJugador = tiempo;
+        puntajeFinal();       
+        abriModalFinal();
     }       
 }
 
@@ -60,12 +68,16 @@ function botonPresionado(){
     secuencia[posArray]
     if(secuencia[posArray]!=null){
         if(e.target.id == secuencia[posArray]){
-            score++
+            score = score + 10;
+        }else{
+            abriModalError();
         }
         posArray++;
+        controlClick++;
+        controlJuego();
         cambiarScore();
     }else{
-        alert("La secuencia termino, pase al proximo nivel");        
+        console.log("no esta jugando");      
     }   
     
   });
@@ -134,15 +146,171 @@ function cambiarScore(){
 function cambiarNivel(){    
     lev = document.getElementById('level');
     lev.textContent = nivel;
-    botonPlay.value = "Proximo Nivel";
+    botonPlay.style.visibility = 'hidden';
+}
+
+function reiniciarTimer(){
+    var l = document.getElementById("timer");
+    l.textContent = tiempo;
 }
 
 function reiniciarTodo(){
     score = 0;
     posArray = 0;
+    controlClick = 0;
     nivel = 0;
+    tiempo = 0;
+    reiniciarTimer();
     cambiarNivel();
     cambiarScore();
-    botonPlay.value = "Play";
-    secuencia = [1,3,2,0];
+    botonPlay.style.visibility = 'visible';
+    secuencia = [];
 }
+
+function controlJuego(){
+    if(controlClick == secuencia.length){        
+        jugar();
+    }
+}
+
+function timer(){    
+    var l = document.getElementById("timer");
+    TimerFin = window.setInterval(function(){
+      l.textContent = tiempo;
+      tiempo++;
+    },1000);
+}
+
+// Ventana modal funcionamiento
+
+var modal = document.getElementById("ventanaModal");
+var cerrarMod = document.getElementById("cerrarModal");;
+cerrarMod.addEventListener("click",function() {
+    var lblJug = document.getElementById("lblJugador");
+    var conForm = document.getElementById('nomJugador').value;
+    if(conForm.length>3){
+        modal.style.display = "none";    
+        lblJug.textContent = conForm;
+    }else{
+        var lbladv = document.getElementById("advertencia");
+        lbladv.style.color = "red";
+        lbladv.textContent = "EL NOMBRE DEBE TENER MAS DE 3 CARACTERES"
+    }    
+  });
+  
+function abriModal(){    
+    modal.style.display = "flex";
+}
+abriModal();
+
+// Ventana modal Fin del juego funcionamiento
+
+var modalFin = document.getElementById("ventanaModalFin");
+var cerrarMod = document.getElementById("cerrarModalVictoria");
+
+cerrarMod.addEventListener("click",function() {    
+    reiniciarTodo();
+    modalFin.style.display = "none"; 
+    });
+  
+function abriModalFinal(){
+    guardarPuntaje();
+    clearInterval(TimerFin);
+    modalFin.style.display = "flex";
+        
+}
+
+//ventana modal error de secuencia
+
+var modalError = document.getElementById("ventanaModalError");
+var cerrarModError = document.getElementById("cerrarModalError");
+
+cerrarModError.addEventListener("click",function() {    
+    reiniciarTodo();
+    modalError.style.display = "none"; 
+    });
+  
+function abriModalError(){
+    clearInterval(TimerFin);
+    modalError.style.display = "flex";
+        
+}
+
+function puntajeFinal(){
+    var lblScore = document.getElementById("puntos");
+    var lblTiempo = document.getElementById("tiempo");
+    var lblScoreFinal = document.getElementById("scoreFinal");
+    lblScore.textContent = score;
+    lblTiempo.textContent = tiempoJugador;
+    lblScoreFinal.textContent = score - tiempoJugador;    
+}
+
+function guardarPuntaje(){
+    debugger;
+    console.log("Consola para guardar puntuacion");
+    var puntuacion = [];       
+    var nombre = document.getElementById('nomJugador').value;
+    var puntos = document.getElementById("scoreFinal").textContent;
+    var fecha = new Date();
+    puntuacion = [nombre+'@'+puntos+'&'+fecha.toDateString()];
+    console.log(puntuacion);
+    localStorage.setItem(fecha,puntuacion);
+}
+
+//pop up ranking
+var ranking = document.getElementById("popUpRanking");
+var btnRanking = document.getElementById("botonRanking");
+btnRanking.addEventListener('click',abrirRanking);
+
+function abrirRanking(){
+    ranking.style.display = "flex";
+    var btnPorFecha = document.getElementById("porFecha");
+    btnPorFecha.addEventListener('click',ordenarPorFecha);
+    var btnPorValor = document.getElementById("porValor");
+    btnPorValor.addEventListener('click',ordenarPorPuntos);
+    var btnCerrar = document.getElementById("cerrarRanking");
+    btnCerrar.addEventListener('click',cerrarRanking);
+    ordenarPorPuntos();    
+}
+
+function traerStorage() {    
+    var valores = [];    
+    claves = Object.keys(localStorage),
+    i = claves.length;
+    while ( i-- ) {
+        var enArray = [];
+        var elemento = localStorage.getItem(claves[i]);
+        enArray['nombre'] = elemento.substring(0,elemento.indexOf('@'));
+        enArray['puntos'] = elemento.substring(elemento.indexOf('@')+1,elemento.indexOf('&'));
+        enArray['fecha'] = elemento.substring(elemento.indexOf('&')+1,elemento.length);
+        valores.push(enArray);
+    }  
+    return valores;
+}
+
+function cerrarRanking(){
+    ranking.style.display = "none";
+}
+
+function ordenarPorPuntos(){
+    var lista = document.getElementById("listaPuntos");
+    lista.innerHTML = ``;
+    var valoresEnRanking = traerStorage();
+    console.log(valoresEnRanking.sort((a, b) => a.puntos < b.puntos));    
+    for(i=0;i<valoresEnRanking.length;i++){
+        var paraLista = "Nombre: " + valoresEnRanking[i].nombre + " Puntos: " + valoresEnRanking[i].puntos + " Fecha : " + valoresEnRanking[i].fecha;
+        lista.innerHTML += `<li>${paraLista}</li>`;
+    }
+}
+
+function ordenarPorFecha(){
+    var lista = document.getElementById("listaPuntos");
+    lista.innerHTML = ``;
+    var valoresEnRanking = traerStorage();
+    console.log(valoresEnRanking.sort((a, b) => a.fecha < b.fecha));    
+    for(i=0;i<valoresEnRanking.length;i++){
+        var paraLista = "Nombre: " + valoresEnRanking[i].nombre + " Puntos: " + valoresEnRanking[i].puntos + " Fecha : " + valoresEnRanking[i].fecha;
+        lista.innerHTML += `<li>${paraLista}</li>`;
+    }
+}
+
