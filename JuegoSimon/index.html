@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="estilo.css">
     <title>JUEGO SIMON</title>
 </head>
+
 <body>
     <div class="contenedorFlex">
         <div class="cabecera">
@@ -13,82 +16,83 @@
             <h2>A JUGAR AL SIMON <label id="lblJugador"></label>!</h2>
             <input type="button" class="play" id="iniciar" value="PLAY">
             <input type="button" class="replay" id="replay" value="REINCIAR">
-            <div class="tipoJuego">               
+            <div class="tipoJuego">
                 <a href="formu.html">Contacto</a>
                 <a href="https://github.com/ArielJaku/LPPA/tree/master/JuegoSimon" target="_blank">Repositorio</a>
                 <a id="botonRanking">Ranking</a>
-             </div>
-        </div>        
+            </div>
+        </div>
         <div class="cuerpo">
             <div class="contenedorJuego">
                 <div class="dosDeArriba">
-                    <input type="button" class="cero" id="0">
-                    <input type="button" class="uno" id="1">
+                    <input type="button" class="cero" id="0" value=" ">
+                    <input type="button" class="uno" id="1" value=" ">
                 </div>
                 <div class="dosDeAbajo">
-                    <input type="button" class="dos" id="2">
-                    <input type="button" class="tres" id="3">
+                    <input type="button" class="dos" id="2" value=" ">
+                    <input type="button" class="tres" id="3" value=" ">
                 </div>
             </div>
         </div>
         <div class="pie">
             <div class="puntos">
-                <label for="">PUNTOS: </label>
-                <label for="" id="score">0</label>                
+                <label>PUNTOS: </label>
+                <label id="score">0</label>
             </div>
             <div>
-                <label for="">TIEMPO: </label>
-                <label for="" id="timer">0</label>
-            </div>            
+                <label>TIEMPO: </label>
+                <label id="timer">0</label>
+            </div>
             <div class="nivel">
-                <label for="">NIVEL: </label>
-                <label for="" id="level">0</label>
+                <label>NIVEL: </label>
+                <label id="level">0</label>
             </div>
         </div>
     </div>
     <!-- Ventana modal ingreso Pagina-->
     <div id="ventanaModal" class="modal">
-        <div class="contenido-modal">            
+        <div class="contenidoModal">
             <h2>INGRESE SU NOMBRE</h2>
             <input type="text" name="Jugador" id="nomJugador">
             <div>
-            <label for="Jugador" id="advertencia"></label>
+                <label id="advertencia"></label>
             </div>
             <button id="cerrarModal" class="cerrarModIng">Ingresar</button>
         </div>
     </div>
     <!-- Ventana modal Fin del Juego -->
     <div id="ventanaModalFin" class="modalFin">
-        <div class="contenido-modalFin">            
+        <div class="contenidoModalFin">
             <h2>¡GANASTE!</h2>
             tu puntuacion es:
-            <label for="puntos" id="puntos"></label><br>
+            <label id="puntos"></label><br>
             tu tiempo fue de :
-            <label for="tiempo" id="tiempo"></label><br>
+            <label id="tiempo"></label><br>
             tu puntuacion total es de:
-            <label for="scoreFinal" id="scoreFinal"></label><br>
+            <label id="scoreFinal"></label><br>
             <button id="cerrarModalVictoria" class="cerrarModVic">Reiniciar el juego</button>
         </div>
     </div>
     <!-- Ventana modal erro Secuencia-->
     <div id="ventanaModalError" class="modalError">
-        <div class="contenido-modalError">            
+        <div class="contenidoModalError">
             <h2>ERRASTE LA SECUENCIA</h2>
-            <H2>PERDISTE</H2>            
+            <H2>PERDISTE</H2>
             <button id="cerrarModalError" class="cerrarModVic">Reiniciar el juego</button>
         </div>
     </div>
     <!--Pop up ranking-->
     <div id="popUpRanking" class="ranking">
-        <div class="contenido-ranking">            
+        <div class="contenidoRanking">
             <h3>ranking de partidas</h3>
             <ul id="listaPuntos">
-            </ul>         
+            </ul>
             <input type="button" name="porFecha" id="porFecha" value="ordenar por fecha">
             <input type="button" name="porValor" id="porValor" value="ordenar por puntos">
             <input type="button" name="cerrarRanking" id="cerrarRanking" value="cerrar">
         </div>
     </div>
-    <script src="funcion.js"></script>   
+    <script src="funcion.js"></script>
 </body>
+
 </html>
